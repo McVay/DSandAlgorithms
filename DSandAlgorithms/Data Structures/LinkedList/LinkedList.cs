@@ -6,8 +6,8 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 { 
     public class LinkedList<T>
     {
-        public Node<T> Head { get; set; }
-        public long Count { get; set; }
+       Node<T> Head { get; set; }
+       public long Count { get; set; }
 
         public LinkedList(T value)
         {

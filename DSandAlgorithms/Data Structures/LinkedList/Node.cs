@@ -2,9 +2,9 @@
 {
     public class Node<T>
     {
-        public Node<T> Prev { get; set; }
-        public Node<T> Next { get; set; }
-        public T Value { get; }
+        internal Node<T> Prev { get; set; }
+        internal Node<T> Next { get; set; }
+        internal T Value { get; }
 
         public Node(T value)
         {
