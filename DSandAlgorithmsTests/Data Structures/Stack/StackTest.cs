@@ -1,9 +1,9 @@
-﻿using DSandAlgorithms.Data_Structures.Stack;
+﻿using DSandAlgorithms.DataStructures.Stack;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Text;
 
-namespace DSandAlgorithmsTests.Data_Structures.Stack
+namespace DSandAlgorithmsTests.DataStructures.Stack
 {
     [TestClass]
     public class StackTest

@@ -1,8 +1,8 @@
-﻿using DSandAlgorithms.Data_Structures.Stack;
+﻿using DSandAlgorithms.DataStructures.Stack;
 using System;
 using System.Text;
 
-namespace DSandAlgorithms.Data_Structures.Queue
+namespace DSandAlgorithms.DataStructures.Queue
 {
     public class Queue<T>
     {
