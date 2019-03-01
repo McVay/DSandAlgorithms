@@ -7,6 +7,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
     public class LinkedList<T>
     {
        Node<T> Head { get; set; }
+       Node<T> Tail { get; set; }
        public long Count { get; set; }
 
         public LinkedList(T value)
@@ -31,6 +32,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             if (Head == null)
             {
                 Head = newHead;
+                Tail = newHead;
             }
             else
             {
@@ -56,18 +58,13 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             if (Head == null)
             {
                 Head = newNode;
+                Tail = newNode;
             }
             else
             {
-                Node<T> curr = Head;
-
-                while (curr.Next != null)
-                {
-                    curr = curr.Next;
-                }
-
-                newNode.Prev = curr;
-                curr.Next = newNode;
+                newNode.Prev = Tail;
+                Tail.Next = newNode;
+                Tail = newNode;
             }
 
             IncrementCount();            
@@ -110,14 +107,8 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         }
         public T PeekLast()
         {
-            if(Head == null) throw new InvalidOperationException("There is no head node defined!");
-
-            Node<T> curr = Head;
-            while(curr.Next != null)
-            {
-                curr = curr.Next;
-            }
-            return curr.Value;
+            if(Tail == null) throw new InvalidOperationException("There is no tail node defined!");
+            return Tail.Value;
         }
         public T PeekIndex(long index)
         {
@@ -179,30 +170,30 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         }
         public void RemoveFirst()
         {
-            if (Head == null) throw new InvalidOperationException("The linked list is empty.");
+            if (Head == null && Tail == null) throw new InvalidOperationException("The linked list is empty.");
 
             Head = Head.Next;
+
+            if(Head == null)
+            {
+                Tail = null;
+            }
+
             DecrementCount();
         }
         public void RemoveLast()
         {
-            if (Head == null) throw new InvalidOperationException("The linked list is empty.");
+            if (Tail == null && Head == null) throw new InvalidOperationException("The linked list is empty.");
 
-            Node<T> curr = Head;
+            Tail = Tail.Prev;
 
-
-            while (curr.Next != null)
-            {
-                curr = curr.Next;
-            }
-
-            if(curr.Prev == null)
+            if (Tail == null)
             {
                 Head = null;
             }
             else
             {
-                curr.Prev.Next = null;
+                Tail.Next = null;
             }
 
             DecrementCount();
