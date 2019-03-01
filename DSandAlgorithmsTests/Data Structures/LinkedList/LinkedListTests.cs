@@ -193,5 +193,23 @@ namespace DSandAlgorithmsTests.DataStructures.LinkedList
 
             Assert.AreEqual("1 -> 2 -> 3 -> 4 -> 5 -> 7 -> 8 -> 9 -> 10 -> 23", linkedList.PrintAllNodes());
         }
+
+        [TestMethod]
+        public void PrintAllNodesBackwardsTest()
+        {
+            LinkedList<int> linkedList = new LinkedList<int>();
+
+            linkedList.Add(new System.Collections.Generic.List<int> { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 });
+
+            Assert.AreEqual("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10", linkedList.PrintAllNodesReversed());
+
+            linkedList.RemoveIndex(5);
+
+            Assert.AreEqual("1 -> 2 -> 3 -> 4 -> 6 -> 7 -> 8 -> 9 -> 10", linkedList.PrintAllNodesReversed());
+
+            linkedList.Add(23);
+
+            Assert.AreEqual("23 -> 1 -> 2 -> 3 -> 4 -> 6 -> 7 -> 8 -> 9 -> 10", linkedList.PrintAllNodesReversed());
+        }
     }
 }

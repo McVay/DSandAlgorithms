@@ -143,6 +143,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
                 if(newHead == null)
                 {
                     Head = null;
+                    Tail = null;
                 }
                 else
                 {
@@ -159,6 +160,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
                 {
                     Node<T> prevNode = curr.Prev;
                     prevNode.Next = curr.Next;
+                    curr.Next.Prev = curr.Prev;
                 }
                 else
                 {
@@ -181,6 +183,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             DecrementCount();
         }
+
         public void RemoveLast()
         {
             if (Tail == null && Head == null) throw new InvalidOperationException("The linked list is empty.");
@@ -228,6 +231,20 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             return sb.ToString();
         }
 
+        public string PrintAllNodesReversed()
+        {
+            StringBuilder sb = new StringBuilder();
+            string separator = "";
+            foreach (var value in this.EnumerateBackwards())
+            {
+                sb.Append(separator);
+                sb.Append(value.ToString());
+                separator = " -> ";
+            }
+
+            return sb.ToString();
+        }
+
         private void IncrementCount() => Count++;
         private void DecrementCount() => Count--;
 
@@ -238,6 +255,16 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             {
                 yield return curr.Value;
                 curr = curr.Next;
+            }
+        }
+
+        public IEnumerable<T> EnumerateBackwards()
+        {
+            Node<T> curr = Tail;
+            while (curr != null)
+            {
+                yield return curr.Value;
+                curr = curr.Prev;
             }
         }
 
