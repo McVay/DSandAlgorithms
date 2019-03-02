@@ -1,22 +1,22 @@
+using DSandAlgorithms.DataStructures.BinaryTree;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using DSandAlgorithms.DataStructures.BinaryTree;
 
 namespace DSandAlgorithmsTests.DataStructures.BinaryTree
 {
     [TestClass]
     public class BinarySearchTreeTests
     {
-
-        /*  
+        /*
                  5
                 / \
                3   6
-              / \      
-             2   4  
-            /  
-           1     
+              / \
+             2   4
+            /
+           1
         */
+
         [TestMethod]
         public void AddTest()
         {
@@ -55,7 +55,6 @@ namespace DSandAlgorithmsTests.DataStructures.BinaryTree
             Assert.AreEqual(5, bst.FindParent(3).Value);
             Assert.AreEqual(5, bst.FindParent(6).Value);
             Assert.AreEqual(null, bst.FindParent(5));
-
         }
 
         [TestMethod]
@@ -63,7 +62,6 @@ namespace DSandAlgorithmsTests.DataStructures.BinaryTree
         {
             BinarySearchTree<int> bst = new BinarySearchTree<int>();
             Assert.AreEqual(0, bst.Count);
-
 
             bst.AddChild(1337);
             Assert.AreEqual(1, bst.Count);
@@ -86,7 +84,6 @@ namespace DSandAlgorithmsTests.DataStructures.BinaryTree
             bst.Remove(5);
             Assert.AreEqual(6, bst.FindParent(3).Value);
             Assert.IsFalse(bst.Remove(100));
-
         }
 
         [TestMethod]

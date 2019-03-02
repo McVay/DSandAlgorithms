@@ -40,7 +40,6 @@ namespace DSandAlgorithmsTests.DataStructures.Queue
             queue.Enqueue(3);
             Assert.AreEqual(3, queue.Count);
 
-
             Assert.AreEqual(1, queue.Dequeue());
             Assert.AreEqual(2, queue.Dequeue());
             Assert.AreEqual(3, queue.Dequeue());

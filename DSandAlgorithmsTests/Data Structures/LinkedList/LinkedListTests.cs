@@ -1,6 +1,6 @@
+using DSandAlgorithms.DataStructures.LinkedList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using DSandAlgorithms.DataStructures.LinkedList;
 
 namespace DSandAlgorithmsTests.DataStructures.LinkedList
 {
@@ -18,8 +18,8 @@ namespace DSandAlgorithmsTests.DataStructures.LinkedList
 
             Assert.AreEqual(1, linkedList.Count);
 
-            linkedList.Add(new System.Collections.Generic.List<int> { 2, 3, 4 , 5});
-             
+            linkedList.Add(new System.Collections.Generic.List<int> { 2, 3, 4, 5 });
+
             Assert.AreEqual(5, linkedList.Count);
         }
 
@@ -114,7 +114,7 @@ namespace DSandAlgorithmsTests.DataStructures.LinkedList
 
             linkedList.Add(new System.Collections.Generic.List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
 
-            Assert.AreEqual(1,linkedList.PeekFirst());
+            Assert.AreEqual(1, linkedList.PeekFirst());
             Assert.AreEqual(10, linkedList.Count);
             linkedList.RemoveFirst();
             Assert.AreEqual(2, linkedList.PeekFirst());

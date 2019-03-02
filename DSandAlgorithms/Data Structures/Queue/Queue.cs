@@ -1,6 +1,5 @@
 ﻿using DSandAlgorithms.DataStructures.Stack;
 using System;
-using System.Text;
 
 namespace DSandAlgorithms.DataStructures.Queue
 {
@@ -8,7 +7,6 @@ namespace DSandAlgorithms.DataStructures.Queue
     {
         private Stack<T> mainStack { get; set; }
         private Stack<T> stagingStack { get; set; }
-
 
         public Queue()
         {
@@ -33,17 +31,16 @@ namespace DSandAlgorithms.DataStructures.Queue
             }
         }
 
-
         public void Enqueue(T value)
         {
-            while(!mainStack.IsEmpty)
+            while (!mainStack.IsEmpty)
             {
                 stagingStack.Push(mainStack.Pop());
             }
 
             mainStack.Push(value);
 
-            while(!stagingStack.IsEmpty)
+            while (!stagingStack.IsEmpty)
             {
                 mainStack.Push(stagingStack.Pop());
             }
@@ -51,7 +48,7 @@ namespace DSandAlgorithms.DataStructures.Queue
 
         public T Dequeue()
         {
-            if(mainStack.IsEmpty)
+            if (mainStack.IsEmpty)
             {
                 throw new InvalidOperationException("The queue is empty!");
             }
@@ -62,6 +59,5 @@ namespace DSandAlgorithms.DataStructures.Queue
         public bool IsEmpty => Count == 0;
         public long Count => mainStack.Count;
         public T Front => mainStack.Top;
-
     }
 }

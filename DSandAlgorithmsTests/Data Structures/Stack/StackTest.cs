@@ -1,7 +1,6 @@
 ﻿using DSandAlgorithms.DataStructures.Stack;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Text;
 
 namespace DSandAlgorithmsTests.DataStructures.Stack
 {

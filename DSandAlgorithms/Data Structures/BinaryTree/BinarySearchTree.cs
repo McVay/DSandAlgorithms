@@ -23,11 +23,11 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
 
             int compare = value.CompareTo(current.Value);
 
-            if(compare < 0)
+            if (compare < 0)
             {
                 current.Left = AddNodeRecursively(current.Left, value);
             }
-            else if(compare > 0)
+            else if (compare > 0)
             {
                 current.Right = AddNodeRecursively(current.Right, value);
             }
@@ -44,7 +44,7 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
             BinaryTreeNode<T> nodeToRemove = Find(value);
 
             // Value is not in BST
-            if(nodeToRemove == null)
+            if (nodeToRemove == null)
             {
                 return false;
             }
@@ -56,9 +56,9 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
             {
                 root = null;
             }
-            else if(nodeToRemove.Left == null && nodeToRemove.Right == null)
+            else if (nodeToRemove.Left == null && nodeToRemove.Right == null)
             {
-                if(nodeToRemove.Value.CompareTo(parent.Value) < 0)
+                if (nodeToRemove.Value.CompareTo(parent.Value) < 0)
                 {
                     parent.Left = null;
                 }
@@ -67,12 +67,12 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
                     parent.Right = null;
                 }
             }
-            else if(nodeToRemove.Left == null && nodeToRemove.Right != null)
+            else if (nodeToRemove.Left == null && nodeToRemove.Right != null)
             {
-                if(nodeToRemove.Value.CompareTo(parent.Value) < 0)
+                if (nodeToRemove.Value.CompareTo(parent.Value) < 0)
                 {
                     parent.Left = nodeToRemove.Right;
-                } 
+                }
                 else
                 {
                     parent.Right = nodeToRemove.Right;
@@ -91,12 +91,10 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
             }
             else
             {
-                
-
                 BinaryTreeNode<T> successor = nodeToRemove.Right;
                 BinaryTreeNode<T> succesorParent = nodeToRemove;
 
-                if(successor.Left == null)
+                if (successor.Left == null)
                 {
                     nodeToRemove.Value = successor.Value;
                     nodeToRemove.Right = successor.Right;
@@ -128,7 +126,7 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
             if (compare == 0)
             {
                 return current;
-            } 
+            }
             else
             {
                 if (compare < 0)
@@ -145,7 +143,7 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
         public BinaryTreeNode<T> FindParent(T value)
         {
             int compare = value.CompareTo(root.Value);
-            if(compare == 0)
+            if (compare == 0)
             {
                 return null;
             }
@@ -157,16 +155,15 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
 
         private BinaryTreeNode<T> FindParentRecursively(BinaryTreeNode<T> current, T value)
         {
-
             int compare = value.CompareTo(current.Value);
 
             if (compare < 0)
             {
-                if(root.Left == null)
+                if (root.Left == null)
                 {
                     return null;
-                } 
-                else if(value.CompareTo(current.Left.Value) == 0)
+                }
+                else if (value.CompareTo(current.Left.Value) == 0)
                 {
                     return current;
                 }
@@ -177,11 +174,11 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
             }
             else
             {
-                if(root.Right == null)
+                if (root.Right == null)
                 {
                     return null;
                 }
-                else if(value.CompareTo(current.Right.Value) == 0)
+                else if (value.CompareTo(current.Right.Value) == 0)
                 {
                     return current;
                 }
@@ -252,7 +249,7 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
 
         private void InOrderTraversalRecursive(BinaryTreeNode<T> current, List<T> inOrderList)
         {
-            if(current != null)
+            if (current != null)
             {
                 InOrderTraversalRecursive(current.Left, inOrderList);
                 inOrderList.Add(current.Value);
@@ -307,7 +304,7 @@ namespace DSandAlgorithms.DataStructures.BinaryTree
         public bool Contains(T value) => Find(value) != null;
 
         private void IncrementCount() => Count++;
-        private void DecrementCount() => Count--;
 
+        private void DecrementCount() => Count--;
     }
 }

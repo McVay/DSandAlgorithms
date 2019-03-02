@@ -3,9 +3,9 @@ using System;
 
 namespace DSandAlgorithms.DataStructures.Stack
 {
-    public class Stack<T> 
+    public class Stack<T>
     {
-        LinkedList<T> _linkedList { get; set; }
+        private LinkedList<T> _linkedList { get; set; }
 
         public Stack(T value)
         {
@@ -15,7 +15,7 @@ namespace DSandAlgorithms.DataStructures.Stack
         public Stack(System.Collections.Generic.IEnumerable<T> values)
         {
             _linkedList = new LinkedList<T>();
-            foreach(var value in values)
+            foreach (var value in values)
             {
                 _linkedList.AddFirst(value);
             }
@@ -33,7 +33,7 @@ namespace DSandAlgorithms.DataStructures.Stack
 
         public T Pop()
         {
-            if(!IsEmpty)
+            if (!IsEmpty)
             {
                 var temp = Top;
                 _linkedList.RemoveFirst();

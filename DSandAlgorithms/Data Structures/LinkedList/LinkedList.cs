@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace DSandAlgorithms.DataStructures.LinkedList
-{ 
+{
     public class LinkedList<T>
     {
-       Node<T> Head { get; set; }
-       Node<T> Tail { get; set; }
-       public long Count { get; set; }
+        private Node<T> Head { get; set; }
+        private Node<T> Tail { get; set; }
+        public long Count { get; set; }
 
         public LinkedList(T value)
         {
@@ -22,7 +22,6 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public LinkedList()
         {
-
         }
 
         public void AddFirst(T value)
@@ -44,13 +43,15 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             IncrementCount();
         }
+
         public void Add(IEnumerable<T> values)
         {
-            foreach(var value in values)
+            foreach (var value in values)
             {
                 Add(value);
             }
         }
+
         public void Add(T value)
         {
             var newNode = new Node<T>(value);
@@ -67,22 +68,23 @@ namespace DSandAlgorithms.DataStructures.LinkedList
                 Tail = newNode;
             }
 
-            IncrementCount();            
+            IncrementCount();
         }
+
         public void Insert(long index, T value)
         {
-            if(index <= 0)
+            if (index <= 0)
             {
                 AddFirst(value);
             }
-            else if(index >= Count)
+            else if (index >= Count)
             {
                 Add(value);
             }
             else
             {
                 Node<T> curr = Head;
-                for(var i = 0; i < index; i++)
+                for (var i = 0; i < index; i++)
                 {
                     curr = curr.Next;
                 }
@@ -94,7 +96,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
                 newNode.Prev = prevNode;
                 newNode.Next = curr;
                 curr.Prev = newNode;
-                
+
                 IncrementCount();
             }
         }
@@ -105,11 +107,13 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             return Head.Value;
         }
+
         public T PeekLast()
         {
-            if(Tail == null) throw new InvalidOperationException("There is no tail node defined!");
+            if (Tail == null) throw new InvalidOperationException("There is no tail node defined!");
             return Tail.Value;
         }
+
         public T PeekIndex(long index)
         {
             if (Head == null) throw new InvalidOperationException("There is no head node defined!");
@@ -118,9 +122,9 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             if (index < 0 || index >= Count) throw new IndexOutOfRangeException();
 
-            for(var i = 0; i < Count && curr != null; i++)
+            for (var i = 0; i < Count && curr != null; i++)
             {
-                if(i == index)
+                if (i == index)
                 {
                     return curr.Value;
                 }
@@ -137,10 +141,10 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             Node<T> curr = Head;
 
-            if(index == 0)
+            if (index == 0)
             {
                 Node<T> newHead = curr.Next;
-                if(newHead == null)
+                if (newHead == null)
                 {
                     Head = null;
                     Tail = null;
@@ -156,7 +160,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             for (var i = 1; i < Count; i++)
             {
-                if(i == index)
+                if (i == index)
                 {
                     Node<T> prevNode = curr.Prev;
                     prevNode.Next = curr.Next;
@@ -170,13 +174,14 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
             DecrementCount();
         }
+
         public void RemoveFirst()
         {
             if (Head == null && Tail == null) throw new InvalidOperationException("The linked list is empty.");
 
             Head = Head.Next;
 
-            if(Head == null)
+            if (Head == null)
             {
                 Tail = null;
             }
@@ -206,9 +211,9 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         {
             Node<T> curr = Head;
 
-            while(curr != null)
+            while (curr != null)
             {
-                if(EqualityComparer<T>.Default.Equals(curr.Value, value))
+                if (EqualityComparer<T>.Default.Equals(curr.Value, value))
                 {
                     return true;
                 }
@@ -221,7 +226,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         {
             StringBuilder sb = new StringBuilder();
             string separator = "";
-            foreach(var value in this.Enumerate())
+            foreach (var value in this.Enumerate())
             {
                 sb.Append(separator);
                 sb.Append(value.ToString());
@@ -246,12 +251,13 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         }
 
         private void IncrementCount() => Count++;
+
         private void DecrementCount() => Count--;
 
         public IEnumerable<T> Enumerate()
         {
             Node<T> curr = Head;
-            while(curr != null)
+            while (curr != null)
             {
                 yield return curr.Value;
                 curr = curr.Next;
@@ -267,6 +273,5 @@ namespace DSandAlgorithms.DataStructures.LinkedList
                 curr = curr.Prev;
             }
         }
-
     }
 }
