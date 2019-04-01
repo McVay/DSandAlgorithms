@@ -222,6 +222,8 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             {
                 _tail = null;
             }
+
+            DecrementCount();
         }
 
         public bool Contains(T value)
