@@ -241,6 +241,22 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             return false;
         }
 
+        public Node<T> FindNodeByValue(T value)
+        {
+            Node<T> curr = _head;
+
+            while (curr != null)
+            {
+                if (EqualityComparer<T>.Default.Equals(curr.Value, value))
+                {
+                    return curr;
+                }
+                curr = curr.Next;
+            }
+
+            throw new InvalidOperationException("The value was not found");
+        }
+
         public string PrintAllNodes()
         {
             StringBuilder sb = new StringBuilder();
