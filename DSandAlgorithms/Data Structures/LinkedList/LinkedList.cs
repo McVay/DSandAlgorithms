@@ -6,8 +6,8 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 {
     public class LinkedList<T>
     {
-        private Node<T> Head { get; set; }
-        private Node<T> Tail { get; set; }
+        protected Node<T> _head { get; set; }
+        protected Node<T> _tail { get; set; }
         public long Count { get; set; }
 
         public LinkedList(T value)
@@ -28,17 +28,17 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         {
             var newHead = new Node<T>(value);
 
-            if (Head == null)
+            if (_head == null)
             {
-                Head = newHead;
-                Tail = newHead;
+                _head = newHead;
+                _tail = newHead;
             }
             else
             {
-                Node<T> oldHead = Head;
+                Node<T> oldHead = _head;
                 oldHead.Prev = newHead;
                 newHead.Next = oldHead;
-                Head = newHead;
+                _head = newHead;
             }
 
             IncrementCount();
@@ -56,16 +56,16 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         {
             var newNode = new Node<T>(value);
 
-            if (Head == null)
+            if (_head == null)
             {
-                Head = newNode;
-                Tail = newNode;
+                _head = newNode;
+                _tail = newNode;
             }
             else
             {
-                newNode.Prev = Tail;
-                Tail.Next = newNode;
-                Tail = newNode;
+                newNode.Prev = _tail;
+                _tail.Next = newNode;
+                _tail = newNode;
             }
 
             IncrementCount();
@@ -83,7 +83,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
             }
             else
             {
-                Node<T> curr = Head;
+                Node<T> curr = _head;
                 for (var i = 0; i < index; i++)
                 {
                     curr = curr.Next;
@@ -103,22 +103,22 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public T PeekFirst()
         {
-            if (Head == null) throw new InvalidOperationException("There is no head node defined!");
+            if (_head == null) throw new InvalidOperationException("There is no head node defined!");
 
-            return Head.Value;
+            return _head.Value;
         }
 
         public T PeekLast()
         {
-            if (Tail == null) throw new InvalidOperationException("There is no tail node defined!");
-            return Tail.Value;
+            if (_tail == null) throw new InvalidOperationException("There is no tail node defined!");
+            return _tail.Value;
         }
 
         public T PeekIndex(long index)
         {
-            if (Head == null) throw new InvalidOperationException("There is no head node defined!");
+            if (_head == null) throw new InvalidOperationException("There is no head node defined!");
 
-            Node<T> curr = Head;
+            Node<T> curr = _head;
 
             if (index < 0 || index >= Count) throw new IndexOutOfRangeException();
 
@@ -139,20 +139,20 @@ namespace DSandAlgorithms.DataStructures.LinkedList
         {
             if (index < 0 || index >= Count) throw new IndexOutOfRangeException();
 
-            Node<T> curr = Head;
+            Node<T> curr = _head;
 
             if (index == 0)
             {
                 Node<T> newHead = curr.Next;
                 if (newHead == null)
                 {
-                    Head = null;
-                    Tail = null;
+                    _head = null;
+                    _tail = null;
                 }
                 else
                 {
                     newHead.Prev = null;
-                    Head = newHead;
+                    _head = newHead;
                 }
             }
 
@@ -177,13 +177,13 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public void RemoveFirst()
         {
-            if (Head == null && Tail == null) throw new InvalidOperationException("The linked list is empty.");
+            if (_head == null && _tail == null) throw new InvalidOperationException("The linked list is empty.");
 
-            Head = Head.Next;
+            _head = _head.Next;
 
-            if (Head == null)
+            if (_head == null)
             {
-                Tail = null;
+                _tail = null;
             }
 
             DecrementCount();
@@ -191,25 +191,42 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public void RemoveLast()
         {
-            if (Tail == null && Head == null) throw new InvalidOperationException("The linked list is empty.");
+            if (_tail == null && _head == null) throw new InvalidOperationException("The linked list is empty.");
 
-            Tail = Tail.Prev;
+            _tail = _tail.Prev;
 
-            if (Tail == null)
+            if (_tail == null)
             {
-                Head = null;
+                _head = null;
             }
             else
             {
-                Tail.Next = null;
+                _tail.Next = null;
             }
 
             DecrementCount();
         }
 
+        public void Remove(Node<T> node)
+        {
+            if (node.Prev != null)
+            {
+                node.Prev.Next = node.Next;
+            }
+            else
+            {
+                _head = node.Next;
+            }
+
+            if (_head == null)
+            {
+                _tail = null;
+            }
+        }
+
         public bool Contains(T value)
         {
-            Node<T> curr = Head;
+            Node<T> curr = _head;
 
             while (curr != null)
             {
@@ -256,7 +273,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public IEnumerable<T> Enumerate()
         {
-            Node<T> curr = Head;
+            Node<T> curr = _head;
             while (curr != null)
             {
                 yield return curr.Value;
@@ -266,7 +283,7 @@ namespace DSandAlgorithms.DataStructures.LinkedList
 
         public IEnumerable<T> EnumerateBackwards()
         {
-            Node<T> curr = Tail;
+            Node<T> curr = _tail;
             while (curr != null)
             {
                 yield return curr.Value;
