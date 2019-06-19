@@ -1,8 +1,8 @@
-using DSandAlgorithms.DataStructures.BinaryTree;
+using DSandAlgorithms.Data_Structures.BinaryTree;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace DSandAlgorithmsTests.DataStructures.BinaryTree
+namespace DSandAlgorithmsTests.Data_Structures.BinaryTree
 {
     [TestClass]
     public class BinarySearchTreeTests

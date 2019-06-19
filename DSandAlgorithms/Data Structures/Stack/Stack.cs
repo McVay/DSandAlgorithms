@@ -1,7 +1,7 @@
-﻿using DSandAlgorithms.DataStructures.LinkedList;
+﻿using DSandAlgorithms.Data_Structures.LinkedList;
 using System;
 
-namespace DSandAlgorithms.DataStructures.Stack
+namespace DSandAlgorithms.Data_Structures.Stack
 {
     public class Stack<T>
     {

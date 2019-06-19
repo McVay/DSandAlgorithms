@@ -1,7 +1,7 @@
 ﻿using DSandAlgorithms.Data_Structures.HashTable;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DSandAlgorithmsTests.DataStructures.HashTable
+namespace DSandAlgorithmsTests.Data_Structures.HashTable
 {
     [TestClass]
     public class HashTableTest

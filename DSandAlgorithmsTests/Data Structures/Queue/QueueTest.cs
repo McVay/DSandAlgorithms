@@ -1,8 +1,8 @@
-﻿using DSandAlgorithms.DataStructures.Queue;
+﻿using DSandAlgorithms.Data_Structures.Queue;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace DSandAlgorithmsTests.DataStructures.Queue
+namespace DSandAlgorithmsTests.Data_Structures.Queue
 {
     [TestClass]
     public class QueueTest

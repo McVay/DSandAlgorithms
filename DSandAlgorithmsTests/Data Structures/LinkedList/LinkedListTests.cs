@@ -1,8 +1,8 @@
-using DSandAlgorithms.DataStructures.LinkedList;
+using DSandAlgorithms.Data_Structures.LinkedList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace DSandAlgorithmsTests.DataStructures.LinkedList
+namespace DSandAlgorithmsTests.Data_Structures.LinkedList
 {
     [TestClass]
     public class LinkedListTests

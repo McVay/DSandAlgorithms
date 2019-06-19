@@ -1,4 +1,4 @@
-﻿using DSandAlgorithms.DataStructures.LinkedList;
+﻿using DSandAlgorithms.Data_Structures.LinkedList;
 using SysCollections = System.Collections.Generic;
 
 namespace DSandAlgorithms.Data_Structures.HashTable

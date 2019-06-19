@@ -1,4 +1,4 @@
-﻿using DSandAlgorithms.DataStructures.LinkedList;
+﻿using DSandAlgorithms.Data_Structures.LinkedList;
 
 namespace DSandAlgorithms.Data_Structures.Graph
 {

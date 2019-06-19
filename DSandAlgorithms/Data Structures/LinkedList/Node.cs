@@ -1,4 +1,4 @@
-﻿namespace DSandAlgorithms.DataStructures.LinkedList
+﻿namespace DSandAlgorithms.Data_Structures.LinkedList
 {
     public class Node<T>
     {

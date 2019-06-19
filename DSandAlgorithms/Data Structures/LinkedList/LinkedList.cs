@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DSandAlgorithms.DataStructures.LinkedList
+namespace DSandAlgorithms.Data_Structures.LinkedList
 {
     public class LinkedList<T>
     {

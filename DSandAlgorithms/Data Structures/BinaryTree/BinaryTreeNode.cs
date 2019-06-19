@@ -1,4 +1,4 @@
-﻿namespace DSandAlgorithms.DataStructures.BinaryTree
+﻿namespace DSandAlgorithms.Data_Structures.BinaryTree
 {
     public class BinaryTreeNode<T>
     {

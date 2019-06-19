@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace DSandAlgorithmsTests.DataStructures.Heap
+namespace DSandAlgorithmsTests.Data_Structures.Heap
 {
     [TestClass]
     public class HeapTest
