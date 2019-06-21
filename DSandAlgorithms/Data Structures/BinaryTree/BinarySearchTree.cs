@@ -123,20 +123,17 @@ namespace DSandAlgorithms.Data_Structures.BinaryTree
 
             int compare = target.CompareTo(current.Value);
 
-            if (compare == 0)
+            if (compare < 0)
             {
-                return current;
+                return FindNodeRecursively(current.Left, target);
+            }
+            else if (compare > 0)
+            {
+                return FindNodeRecursively(current.Right, target);
             }
             else
             {
-                if (compare < 0)
-                {
-                    return FindNodeRecursively(current.Left, target);
-                }
-                else
-                {
-                    return FindNodeRecursively(current.Right, target);
-                }
+                return current;
             }
         }
 
