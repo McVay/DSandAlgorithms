@@ -1,18 +1,15 @@
-﻿using DSandAlgorithms.Data_Structures.BinaryTree;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace DSandAlgorithms.Data_Structures.AVLTree
 {
-    public class AVLTree<T> where T: IComparable
+    public class AVLTree<T> where T : IComparable
     {
         private AVLTreeNode<T> root;
         private int nodeCount;
 
         private AVLTreeNode<T> RightRotate(AVLTreeNode<T> node)
         {
-            var newParent = node.Left;
+            AVLTreeNode<T> newParent = node.Left;
             node.Left = newParent.Right;
             newParent.Right = node;
             Update(node);
@@ -22,7 +19,7 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         private AVLTreeNode<T> LeftRotate(AVLTreeNode<T> node)
         {
-            var newParent = node.Right;
+            AVLTreeNode<T> newParent = node.Right;
             node.Right = newParent.Left;
             newParent.Left = node;
             Update(node);
@@ -32,7 +29,11 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         public int Height()
         {
-            if (root == null) return 0;
+            if (root == null)
+            {
+                return 0;
+            }
+
             return root.Height;
         }
 
@@ -60,11 +61,11 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
             int compare = target.CompareTo(current.Value);
 
-            if(compare < 0)
+            if (compare < 0)
             {
                 return Contains(current.Left, target);
             }
-            else if(compare > 0)
+            else if (compare > 0)
             {
                 return Contains(current.Right, target);
             }
@@ -76,12 +77,15 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         public bool Insert(T value)
         {
-            if (value == null) return false;
-
-            if(!Contains(value))
+            if (value == null)
             {
-                this.root = Insert(this.root, value);
-                this.nodeCount++;
+                return false;
+            }
+
+            if (!Contains(value))
+            {
+                root = Insert(root, value);
+                nodeCount++;
                 return true;
             }
             return false;
@@ -89,11 +93,15 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         public bool Remove(T value)
         {
-            if (value == null) return false;
-            if(Contains(value))
+            if (value == null)
             {
-                this.root = Remove(this.root, value);
-                this.nodeCount--;
+                return false;
+            }
+
+            if (Contains(value))
+            {
+                root = Remove(root, value);
+                nodeCount--;
                 return true;
             }
             return false;
@@ -101,32 +109,35 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         private AVLTreeNode<T> Remove(AVLTreeNode<T> node, T value)
         {
-            if (node == null) return null;
+            if (node == null)
+            {
+                return null;
+            }
 
             int cmp = value.CompareTo(node.Value);
 
-            if(cmp < 0)
+            if (cmp < 0)
             {
                 node.Left = Remove(node.Left, value);
             }
-            else if(cmp > 0)
+            else if (cmp > 0)
             {
                 node.Right = Remove(node.Right, value);
             }
             // Found the node to remove
             else
             {
-                if(node.Left == null)
+                if (node.Left == null)
                 {
                     return node.Right;
                 }
-                else if(node.Right == null)
+                else if (node.Right == null)
                 {
                     return node.Left;
                 }
                 else
                 {
-                    if(node.Left.Height > node.Right.Height)
+                    if (node.Left.Height > node.Right.Height)
                     {
                         T sucessorValue = FindMax(node.Left);
                         node.Value = sucessorValue;
@@ -166,7 +177,10 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
         private AVLTreeNode<T> Insert(AVLTreeNode<T> node, T value)
         {
             // Base case, we found where we want to insert the node!
-            if (node == null) return new AVLTreeNode<T>(value);
+            if (node == null)
+            {
+                return new AVLTreeNode<T>(value);
+            }
 
             int cmp = value.CompareTo(node.Value);
             if (cmp < 0)
@@ -188,7 +202,7 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
             if (node.BalanceFactor == -2)
             {
                 // Left-Left Case
-                if(node.Left.BalanceFactor <= 0)
+                if (node.Left.BalanceFactor <= 0)
                 {
                     return LeftLeftCase(node);
                 }
@@ -252,15 +266,28 @@ namespace DSandAlgorithms.Data_Structures.AVLTree
 
         public bool ValidateBSTInvariant()
         {
-            return ValidateBSTInvariant(this.root);
+            return ValidateBSTInvariant(root);
         }
+
         private bool ValidateBSTInvariant(AVLTreeNode<T> node)
         {
-            if (node == null) return true;
+            if (node == null)
+            {
+                return true;
+            }
+
             T val = node.Value;
             bool isValid = true;
-            if (node.Left != null) isValid = isValid && node.Left.Value.CompareTo(val) < 0;
-            if (node.Right != null) isValid = isValid && node.Right.Value.CompareTo(val) > 0;
+            if (node.Left != null)
+            {
+                isValid = isValid && node.Left.Value.CompareTo(val) < 0;
+            }
+
+            if (node.Right != null)
+            {
+                isValid = isValid && node.Right.Value.CompareTo(val) > 0;
+            }
+
             return isValid && ValidateBSTInvariant(node.Left) && ValidateBSTInvariant(node.Right);
         }
     }

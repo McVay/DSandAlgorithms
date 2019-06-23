@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DSandAlgorithms.Algorithms.Sorting
 {
-    public class QuickSort 
+    public class QuickSort
     {
         public static void Sort<T>(T[] array) where T : IComparable
         {
@@ -27,9 +24,9 @@ namespace DSandAlgorithms.Algorithms.Sorting
             T pivotValue = array[maxIdx];
             int partitionIdx = minIdx;
 
-            for(int i = minIdx; i < maxIdx; i++)
+            for (int i = minIdx; i < maxIdx; i++)
             {
-                if(array[i].CompareTo(pivotValue) <= 0)
+                if (array[i].CompareTo(pivotValue) <= 0)
                 {
                     Swap(array, partitionIdx, i);
                     partitionIdx++;

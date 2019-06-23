@@ -26,7 +26,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void AddFirst(T value)
         {
-            var newHead = new Node<T>(value);
+            Node<T> newHead = new Node<T>(value);
 
             if (_head == null)
             {
@@ -46,7 +46,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void Add(IEnumerable<T> values)
         {
-            foreach (var value in values)
+            foreach (T value in values)
             {
                 Add(value);
             }
@@ -54,7 +54,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void Add(T value)
         {
-            var newNode = new Node<T>(value);
+            Node<T> newNode = new Node<T>(value);
 
             if (_head == null)
             {
@@ -84,7 +84,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
             else
             {
                 Node<T> curr = _head;
-                for (var i = 0; i < index; i++)
+                for (int i = 0; i < index; i++)
                 {
                     curr = curr.Next;
                 }
@@ -103,26 +103,39 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public T PeekFirst()
         {
-            if (_head == null) throw new InvalidOperationException("There is no head node defined!");
+            if (_head == null)
+            {
+                throw new InvalidOperationException("There is no head node defined!");
+            }
 
             return _head.Value;
         }
 
         public T PeekLast()
         {
-            if (_tail == null) throw new InvalidOperationException("There is no tail node defined!");
+            if (_tail == null)
+            {
+                throw new InvalidOperationException("There is no tail node defined!");
+            }
+
             return _tail.Value;
         }
 
         public T PeekIndex(long index)
         {
-            if (_head == null) throw new InvalidOperationException("There is no head node defined!");
+            if (_head == null)
+            {
+                throw new InvalidOperationException("There is no head node defined!");
+            }
 
             Node<T> curr = _head;
 
-            if (index < 0 || index >= Count) throw new IndexOutOfRangeException();
+            if (index < 0 || index >= Count)
+            {
+                throw new IndexOutOfRangeException();
+            }
 
-            for (var i = 0; i < Count && curr != null; i++)
+            for (int i = 0; i < Count && curr != null; i++)
             {
                 if (i == index)
                 {
@@ -137,7 +150,10 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void RemoveIndex(long index)
         {
-            if (index < 0 || index >= Count) throw new IndexOutOfRangeException();
+            if (index < 0 || index >= Count)
+            {
+                throw new IndexOutOfRangeException();
+            }
 
             Node<T> curr = _head;
 
@@ -158,7 +174,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
             curr = curr.Next;
 
-            for (var i = 1; i < Count; i++)
+            for (int i = 1; i < Count; i++)
             {
                 if (i == index)
                 {
@@ -177,7 +193,10 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void RemoveFirst()
         {
-            if (_head == null && _tail == null) throw new InvalidOperationException("The linked list is empty.");
+            if (_head == null && _tail == null)
+            {
+                throw new InvalidOperationException("The linked list is empty.");
+            }
 
             _head = _head.Next;
 
@@ -191,7 +210,10 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
 
         public void RemoveLast()
         {
-            if (_tail == null && _head == null) throw new InvalidOperationException("The linked list is empty.");
+            if (_tail == null && _head == null)
+            {
+                throw new InvalidOperationException("The linked list is empty.");
+            }
 
             _tail = _tail.Prev;
 
@@ -261,7 +283,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
         {
             StringBuilder sb = new StringBuilder();
             string separator = "";
-            foreach (var value in this.Enumerate())
+            foreach (T value in Enumerate())
             {
                 sb.Append(separator);
                 sb.Append(value.ToString());
@@ -275,7 +297,7 @@ namespace DSandAlgorithms.Data_Structures.LinkedList
         {
             StringBuilder sb = new StringBuilder();
             string separator = "";
-            foreach (var value in this.EnumerateBackwards())
+            foreach (T value in EnumerateBackwards())
             {
                 sb.Append(separator);
                 sb.Append(value.ToString());

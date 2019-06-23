@@ -1,6 +1,5 @@
 using DSandAlgorithms.Data_Structures.AVLTree;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace DSandAlgorithmsTests.Data_Structures.AVLTree
 {

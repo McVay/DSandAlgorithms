@@ -9,7 +9,7 @@ namespace DSandAlgorithmsTests.Data_Structures.TrieTest
         [TestMethod]
         public void AddTest()
         {
-            var trie = new Trie();
+            Trie trie = new Trie();
             trie.Insert("Apple");
             trie.Insert("Banana");
             trie.Insert("Bananas");
@@ -24,7 +24,7 @@ namespace DSandAlgorithmsTests.Data_Structures.TrieTest
         [TestMethod]
         public void PrefixTest()
         {
-            var trie = new Trie();
+            Trie trie = new Trie();
             trie.Insert("Apple");
             trie.Insert("Banana");
             trie.Insert("Bananas");

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace DSandAlgorithmsTests.Data_Structures.FenwickTree
 {
@@ -11,8 +10,7 @@ namespace DSandAlgorithmsTests.Data_Structures.FenwickTree
         public void PrefixSumTest()
         {
             long[] inputList = new long[] { 0, 3, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8 };
-            var tree = new DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree(inputList);
-
+            DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree tree = new DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree(inputList);
 
             Assert.ThrowsException<IndexOutOfRangeException>(() => tree.PrefixSum(20));
             Assert.ThrowsException<IndexOutOfRangeException>(() => tree.PrefixSum(-5));
@@ -29,7 +27,7 @@ namespace DSandAlgorithmsTests.Data_Structures.FenwickTree
         public void SumTest()
         {
             long[] inputList = new long[] { 0, 3, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8 };
-            var tree = new DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree(inputList);
+            DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree tree = new DSandAlgorithms.Data_Structures.FenwickTree.FenwickTree(inputList);
 
             Assert.AreEqual(21, tree.Sum(4, 6));
             Assert.AreEqual(12, tree.Sum(1, 12));

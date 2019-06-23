@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DSandAlgorithms.Algorithms.Sorting
 {
-    public class MergeSort 
+    public class MergeSort
     {
         public static void Sort<T>(T[] array) where T : IComparable
         {
@@ -19,10 +17,7 @@ namespace DSandAlgorithms.Algorithms.Sorting
                 return array;
             }
 
-            T[] leftArray;
-            T[] rightArray;
-
-            SplitArrayInMiddle(array, out leftArray, out rightArray);
+            SplitArrayInMiddle(array, out T[] leftArray, out T[] rightArray);
 
             return MergeArrays(MergeSortCore(leftArray), MergeSortCore(rightArray), array);
         }
@@ -35,8 +30,8 @@ namespace DSandAlgorithms.Algorithms.Sorting
 
             while (leftIdx < leftArray.Length && rightIdx < rightArray.Length)
             {
-                var cmp = leftArray[leftIdx].CompareTo(rightArray[rightIdx]);
-                if(cmp > 0)
+                int cmp = leftArray[leftIdx].CompareTo(rightArray[rightIdx]);
+                if (cmp > 0)
                 {
                     array[currIdx] = rightArray[rightIdx];
                     rightIdx++;
@@ -64,18 +59,17 @@ namespace DSandAlgorithms.Algorithms.Sorting
             }
 
             return array;
-
-        } 
+        }
 
         private static void SplitArrayInMiddle<T>(T[] array, out T[] left, out T[] right) where T : IComparable
         {
             Split(array, array.Length / 2, out left, out right);
-        } 
+        }
 
         private static void Split<T>(T[] array, int index, out T[] left, out T[] right) where T : IComparable
         {
             left = array.Take(index).ToArray();
             right = array.Skip(index).ToArray();
-        } 
+        }
     }
 }

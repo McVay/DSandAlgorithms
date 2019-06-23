@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DSandAlgorithms.Data_Structures.Trie
 {
@@ -12,16 +10,16 @@ namespace DSandAlgorithms.Data_Structures.Trie
 
         public TrieNode()
         {
-            this.Data = '#';
-            this.IsWord = true;
-            this.Children = new Dictionary<char, TrieNode>();
+            Data = '#';
+            IsWord = true;
+            Children = new Dictionary<char, TrieNode>();
         }
 
         public TrieNode(char ch)
         {
-            this.Data = ch;
-            this.IsWord = false;
-            this.Children = new Dictionary<char, TrieNode>();
+            Data = ch;
+            IsWord = false;
+            Children = new Dictionary<char, TrieNode>();
         }
     }
 }

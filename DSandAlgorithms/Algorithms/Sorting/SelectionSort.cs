@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DSandAlgorithms.Algorithms.Sorting
 {
     public class SelectionSort
     {
-        public static void Sort<T>(T[] array) where T: IComparable
+        public static void Sort<T>(T[] array) where T : IComparable
         {
             int length = array.Length;
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
-                var minIdx = i;
-                var minValue = array[i];
-                for(int j = i + 1; j < length; j++)
+                int minIdx = i;
+                T minValue = array[i];
+                for (int j = i + 1; j < length; j++)
                 {
-                    
-                    var cmp = array[j].CompareTo(array[minIdx]);
+                    int cmp = array[j].CompareTo(array[minIdx]);
                     if (cmp < 0)
                     {
                         minIdx = j;

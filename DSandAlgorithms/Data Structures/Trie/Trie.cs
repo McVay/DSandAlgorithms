@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DSandAlgorithms.Data_Structures.Trie
+﻿namespace DSandAlgorithms.Data_Structures.Trie
 {
     public class Trie
     {
-
         private readonly TrieNode root;
 
         public Trie()
@@ -17,11 +12,11 @@ namespace DSandAlgorithms.Data_Structures.Trie
         public void Insert(string word)
         {
             TrieNode currNode = root;
-            foreach(char ch in word)
+            foreach (char ch in word)
             {
-                if(!currNode.Children.ContainsKey(ch))
+                if (!currNode.Children.ContainsKey(ch))
                 {
-                    var newNode = new TrieNode(ch);
+                    TrieNode newNode = new TrieNode(ch);
                     currNode.Children.Add(ch, newNode);
                 }
                 currNode = currNode.Children[ch];
@@ -32,9 +27,9 @@ namespace DSandAlgorithms.Data_Structures.Trie
         public bool Search(string word)
         {
             TrieNode currNode = root;
-            foreach(char ch in word)
+            foreach (char ch in word)
             {
-                if(!currNode.Children.ContainsKey(ch))
+                if (!currNode.Children.ContainsKey(ch))
                 {
                     return false;
                 }

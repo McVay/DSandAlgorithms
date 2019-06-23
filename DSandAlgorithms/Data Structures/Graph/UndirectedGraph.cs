@@ -23,7 +23,7 @@ namespace DSandAlgorithms.Data_Structures.Graph
 
         public bool Contains(T value)
         {
-            foreach (var node in _nodes)
+            foreach (GraphNode<T> node in _nodes)
             {
                 if (EqualityComparer<T>.Default.Equals(node.Value, value))
                 {
@@ -35,7 +35,7 @@ namespace DSandAlgorithms.Data_Structures.Graph
 
         public GraphNode<T> GetGraphNode(T value)
         {
-            foreach (var node in _nodes)
+            foreach (GraphNode<T> node in _nodes)
             {
                 if (EqualityComparer<T>.Default.Equals(node.Value, value))
                 {
@@ -93,7 +93,7 @@ namespace DSandAlgorithms.Data_Structures.Graph
 
         private void UnvisitAll()
         {
-            foreach (var node in _nodes)
+            foreach (GraphNode<T> node in _nodes)
             {
                 node.IsVisited = false;
             }

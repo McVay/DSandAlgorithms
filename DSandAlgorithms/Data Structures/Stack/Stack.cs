@@ -15,7 +15,7 @@ namespace DSandAlgorithms.Data_Structures.Stack
         public Stack(System.Collections.Generic.IEnumerable<T> values)
         {
             _linkedList = new LinkedList<T>();
-            foreach (var value in values)
+            foreach (T value in values)
             {
                 _linkedList.AddFirst(value);
             }
@@ -35,7 +35,7 @@ namespace DSandAlgorithms.Data_Structures.Stack
         {
             if (!IsEmpty)
             {
-                var temp = Top;
+                T temp = Top;
                 _linkedList.RemoveFirst();
                 return temp;
             }

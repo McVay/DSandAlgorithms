@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DSandAlgorithms.Algorithms.Sorting
 {
@@ -10,8 +8,8 @@ namespace DSandAlgorithms.Algorithms.Sorting
         {
             for (int i = 1; i < array.Length; i++)
             {
-                var val = array[i];
-                var flag = 0;
+                T val = array[i];
+                int flag = 0;
                 for (int j = i - 1; j >= 0 && flag != 1;)
                 {
                     if (val.CompareTo(array[j]) < 0)

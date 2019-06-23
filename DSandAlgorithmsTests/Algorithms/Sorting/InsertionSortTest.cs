@@ -1,9 +1,6 @@
 ﻿using DSandAlgorithms.Algorithms.Sorting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DSandAlgorithmsTests.Algorithms.Sorting
 {
@@ -13,8 +10,8 @@ namespace DSandAlgorithmsTests.Algorithms.Sorting
         [TestMethod]
         public void SortTest()
         {
-            var input = new int[] { 40, 34, 500, 100, 43, 43, 65 };
-            var sorted = input.OrderBy(s => s).ToList();
+            int[] input = new int[] { 40, 34, 500, 100, 43, 43, 65 };
+            System.Collections.Generic.List<int> sorted = input.OrderBy(s => s).ToList();
 
             InsertionSort.Sort(input);
 

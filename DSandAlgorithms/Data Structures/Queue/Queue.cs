@@ -25,7 +25,7 @@ namespace DSandAlgorithms.Data_Structures.Queue
             mainStack = new Stack<T>();
             stagingStack = new Stack<T>();
 
-            foreach (var value in values)
+            foreach (T value in values)
             {
                 Enqueue(value);
             }

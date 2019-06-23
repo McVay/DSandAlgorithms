@@ -23,7 +23,7 @@ namespace DSandAlgorithms.Data_Structures.Graph
 
         public void AddEdges(System.Collections.Generic.List<GraphNode<T>> graphNodes)
         {
-            foreach (var node in graphNodes)
+            foreach (GraphNode<T> node in graphNodes)
             {
                 Neighbors.Add(node);
             }

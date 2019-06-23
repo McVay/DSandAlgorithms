@@ -117,7 +117,7 @@ namespace DSandAlgorithms.Data_Structures.HashTable
                 _maxBuckets = _maxBuckets * 2;
 
                 _buckets = new KeyValueLinkedList<K, V>[2 * _maxBuckets];
-                foreach (var keyValueList in keyValueLists)
+                foreach (KeyValueLinkedList<K, V> keyValueList in keyValueLists)
                 {
                     int index = GetIndex(keyValueList.PeekFirst().Key);
 

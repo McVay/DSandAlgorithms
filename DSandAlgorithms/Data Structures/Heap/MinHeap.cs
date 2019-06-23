@@ -12,7 +12,7 @@ namespace DSandAlgorithms.Data_Structures.Heap
 
         public void Add(List<T> values)
         {
-            foreach (var val in values)
+            foreach (T val in values)
             {
                 _items.Add(val);
                 IncrementCount();
@@ -46,14 +46,14 @@ namespace DSandAlgorithms.Data_Structures.Heap
 
         public bool Contains(T value)
         {
-            var start = 0;
-            var nodes = 1;
+            int start = 0;
+            int nodes = 1;
 
             while (start < _items.Count)
             {
                 start = nodes - 1;
-                var end = nodes + start;
-                var count = _items.Count;
+                int end = nodes + start;
+                int count = _items.Count;
 
                 while (start < count && start < end)
                 {
@@ -80,7 +80,7 @@ namespace DSandAlgorithms.Data_Structures.Heap
         {
             if (Count > 0)
             {
-                var tmp = _items[0];
+                T tmp = _items[0];
                 Remove(tmp);
                 return tmp;
             }
