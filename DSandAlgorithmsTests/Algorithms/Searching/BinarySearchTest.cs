@@ -9,7 +9,7 @@ namespace DSandAlgorithmsTests.Algorithms.Searching
     public class BinarySearchTest
     {
         [TestMethod]
-        public void SortTest()
+        public void SearchTest()
         {
             int[] input = new int[] { 1, 5, 10, 25, 2000, 3550 };
 
