@@ -16,7 +16,7 @@ namespace DSandAlgorithmsTests.Algorithms.Sorting
             var input = new int[] { 40, 34, 500, 100, 43, 43, 65 };
             var sorted = input.OrderBy(s => s).ToList();
 
-            MergeSort.Sort(ref input);
+            MergeSort.Sort(input);
 
             CollectionAssert.AreEqual(input, sorted);
             Assert.AreEqual(500, input[input.Length - 1]);
