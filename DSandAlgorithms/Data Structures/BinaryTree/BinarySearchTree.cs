@@ -6,7 +6,7 @@ namespace DSandAlgorithms.Data_Structures.BinaryTree
     public class BinarySearchTree<T> where T : IComparable
     {
         public int Count = 0;
-        private BinaryTreeNode<T> root;
+        public BinaryTreeNode<T> root;
 
         public void AddChild(T value)
         {
@@ -224,78 +224,6 @@ namespace DSandAlgorithms.Data_Structures.BinaryTree
                 current = current.Right;
             }
             return current;
-        }
-
-        private void PreOrderTraversalRecursive(BinaryTreeNode<T> current, List<T> preOrderList)
-        {
-            if (current != null)
-            {
-                preOrderList.Add(current.Value);
-                PreOrderTraversalRecursive(current.Left, preOrderList);
-                PreOrderTraversalRecursive(current.Right, preOrderList);
-            }
-        }
-
-        public List<T> PreOrderTraversal()
-        {
-            List<T> preOrderList = new List<T>();
-            PreOrderTraversalRecursive(root, preOrderList);
-
-            return preOrderList;
-        }
-
-        private void InOrderTraversalRecursive(BinaryTreeNode<T> current, List<T> inOrderList)
-        {
-            if (current != null)
-            {
-                InOrderTraversalRecursive(current.Left, inOrderList);
-                inOrderList.Add(current.Value);
-                InOrderTraversalRecursive(current.Right, inOrderList);
-            }
-        }
-
-        public List<T> InOrderTraversal()
-        {
-            List<T> inOrderList = new List<T>();
-            InOrderTraversalRecursive(root, inOrderList);
-
-            return inOrderList;
-        }
-
-        private void OutOrderTraversalRecursive(BinaryTreeNode<T> current, List<T> outOrderList)
-        {
-            if (current != null)
-            {
-                OutOrderTraversalRecursive(current.Right, outOrderList);
-                outOrderList.Add(current.Value);
-                OutOrderTraversalRecursive(current.Left, outOrderList);
-            }
-        }
-
-        public List<T> OutOrderTraversal()
-        {
-            List<T> outOrderList = new List<T>();
-            OutOrderTraversalRecursive(root, outOrderList);
-
-            return outOrderList;
-        }
-
-        private void PostOrderTraversalRecursive(BinaryTreeNode<T> current, List<T> postOrderList)
-        {
-            if (current != null)
-            {
-                PostOrderTraversalRecursive(current.Left, postOrderList);
-                PostOrderTraversalRecursive(current.Right, postOrderList);
-                postOrderList.Add(current.Value);
-            }
-        }
-
-        public List<T> PostOrderTraversal()
-        {
-            List<T> postOrderList = new List<T>();
-            PostOrderTraversalRecursive(root, postOrderList);
-
-            return postOrderList;
         }
 
         public bool Contains(T value) => Find(value) != null;

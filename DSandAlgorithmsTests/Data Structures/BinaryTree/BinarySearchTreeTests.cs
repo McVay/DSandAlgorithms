@@ -1,3 +1,5 @@
+using DSandAlgorithms.Algorithms;
+using DSandAlgorithms.Algorithms.Searching;
 using DSandAlgorithms.Data_Structures.BinaryTree;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -142,7 +144,7 @@ namespace DSandAlgorithmsTests.Data_Structures.BinaryTree
         }
 
         [TestMethod]
-        public void PreOrderTraversalTest()
+        public void IsValid()
         {
             BinarySearchTree<int> bst = new BinarySearchTree<int>();
 
@@ -153,56 +155,14 @@ namespace DSandAlgorithmsTests.Data_Structures.BinaryTree
             bst.AddChild(1);
             bst.AddChild(4);
 
-            string preOrder = String.Join(',', bst.PreOrderTraversal());
-            Assert.AreEqual("5,3,2,1,4,6", preOrder);
-        }
+            Assert.AreEqual(true, ValidateBST.IsValid(bst));
 
-        [TestMethod]
-        public void InOrderTraversalTest()
-        {
-            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            var newNode = new BinaryTreeNode<int>(-2);
+            newNode.Left = bst.root.Left;
+            newNode.Right = bst.root.Right;
+            bst.root = newNode;
 
-            bst.AddChild(5);
-            bst.AddChild(3);
-            bst.AddChild(2);
-            bst.AddChild(6);
-            bst.AddChild(1);
-            bst.AddChild(4);
-
-            string inOrder = String.Join(',', bst.InOrderTraversal());
-            Assert.AreEqual("1,2,3,4,5,6", inOrder);
-        }
-
-        [TestMethod]
-        public void OutOrderTraversalTest()
-        {
-            BinarySearchTree<int> bst = new BinarySearchTree<int>();
-
-            bst.AddChild(5);
-            bst.AddChild(3);
-            bst.AddChild(2);
-            bst.AddChild(6);
-            bst.AddChild(1);
-            bst.AddChild(4);
-
-            string outOrder = String.Join(',', bst.OutOrderTraversal());
-            Assert.AreEqual("6,5,4,3,2,1", outOrder);
-        }
-
-        [TestMethod]
-        public void PostOrderTraversalTest()
-        {
-            BinarySearchTree<int> bst = new BinarySearchTree<int>();
-
-            bst.AddChild(5);
-            bst.AddChild(3);
-            bst.AddChild(2);
-            bst.AddChild(6);
-            bst.AddChild(1);
-            bst.AddChild(4);
-
-            string postOrder = String.Join(',', bst.PostOrderTraversal());
-            Assert.AreEqual("1,2,4,3,6,5", postOrder);
+            Assert.AreEqual(false, ValidateBST.IsValid(bst));
         }
     }
 }
